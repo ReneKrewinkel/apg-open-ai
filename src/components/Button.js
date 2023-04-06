@@ -1,8 +1,8 @@
 
-const Button = ({ label, fn }) => {
+const Button = ({ label, fn, type }) => {
 
     const clickHandler = () => {
-        fn()
+        fn(type)
     }
 
     return(

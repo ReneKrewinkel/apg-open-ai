@@ -7,7 +7,7 @@ const Input = ({ handler }) => {
     }
 
     return(
-        <div>
+        <div className="input-container">
             <input type="text"
                    placeholder="prompt"
                    //value={prompt}
