@@ -2,6 +2,10 @@ import { useState } from 'react'
 
 import Button from './components/Button'
 import Input from './components/Input'
+import Paragraph from './components/Paragraph'
+import Image from './components/Image'
+import Error from './components/Error'
+
 import './app.css'
 import {generateResult} from "./lib/API";
 
@@ -17,13 +21,13 @@ const App = () => {
     const [hasResult, setResult] = useState(false)
     const [type, setType] = useState(null)
 
-    const [textResult, setTextResult] = useState('')
+    const [result, setGeneratedResult] = useState('')
 
   const generate = async (type) => {
       setType( type )
       setResult(true)
       const [result, error] = await generateResult(type, prompt)
-
+      setGeneratedResult(result)
       if(error) {
           setError(true)
           setResult(false)
@@ -47,9 +51,9 @@ const App = () => {
             <Button label={"Image"} fn={ generate } type={ types.image } />
           </div>
 
-          { isError && <h1>Fout</h1> }
-          { (hasResult && type === types.text)  && <h1>{ textResult }</h1> }
-          { (hasResult && type === types.image) && <h1>IMage</h1> }
+          { isError && <Error /> }
+          { (hasResult && type === types.text)  && <Paragraph result={result} /> }
+          { (hasResult && type === types.image) && <Image result={result} /> }
 
       </div>
   )

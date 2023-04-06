@@ -25,3 +25,13 @@ input {
     padding: 10px;
     font-size: 22px;
 }
+
+.paragraph-container {
+    padding: 10px;
+    border: 1px solid #CCC;
+}
+
+.image-container img {
+    width: 50%;
+    height: auto;
+}
