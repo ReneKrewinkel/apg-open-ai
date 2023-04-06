@@ -17,11 +17,21 @@ const App = () => {
     const [hasResult, setResult] = useState(false)
     const [type, setType] = useState(null)
 
-  const generate = (type) => {
+    const [textResult, setTextResult] = useState('')
+
+  const generate = async (type) => {
       setType( type )
       setResult(true)
-      const [result, error] = generateResult(type, prompt)
-      ////alert(`${type} ${prompt}`)
+      const [result, error] = await generateResult(type, prompt)
+
+      if(error) {
+          setError(true)
+          setResult(false)
+      } else {
+          setError(false)
+          setResult(true)
+      }
+
   }
 
   const inputHandler = (value) => {
@@ -38,7 +48,7 @@ const App = () => {
           </div>
 
           { isError && <h1>Fout</h1> }
-          { (hasResult && type === types.text)  && <h1>Text</h1> }
+          { (hasResult && type === types.text)  && <h1>{ textResult }</h1> }
           { (hasResult && type === types.image) && <h1>IMage</h1> }
 
       </div>

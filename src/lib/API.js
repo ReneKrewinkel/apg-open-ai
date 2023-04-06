@@ -5,6 +5,10 @@ const generateText = async (prompt) => {
     /// ai code
     let result, error
 
+
+    result = "Hij doet het!!"
+    error = false
+
     return [result, error]
 }
 
