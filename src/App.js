@@ -3,8 +3,9 @@ import { useState } from 'react'
 import Button from './components/Button'
 import Input from './components/Input'
 import './app.css'
+import {generateResult} from "./lib/API";
 
-const types = {
+export const types = {
     text: 'text',
     image: 'image'
 }
@@ -19,6 +20,7 @@ const App = () => {
   const generate = (type) => {
       setType( type )
       setResult(true)
+      const [result, error] = generateResult(type, prompt)
       ////alert(`${type} ${prompt}`)
   }
 
