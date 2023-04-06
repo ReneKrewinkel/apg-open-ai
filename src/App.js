@@ -29,6 +29,7 @@ const App = () => {
       const [result, error] = await generateResult(type, prompt)
       setGeneratedResult(result)
       if(error) {
+          console.log(error)
           setError(true)
           setResult(false)
       } else {
